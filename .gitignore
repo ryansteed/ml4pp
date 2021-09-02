@@ -1,4 +1,4 @@
 env
 .vscode
 default.profraw
-.ipynb*
+*.ipynb_checkpoints*
