@@ -33,9 +33,10 @@ More details about my design choices can be found in the Jupyter notebook. A qui
 - Used Jupyter notebook instead of a script to reduce API pings during development and enhance transparency, readability, visualization - this task isn't complicated or long enough for a full library
 - Used `census` library as my API wrapper - so easy with an API key (instructions included)
 - ACS variables are selected with a hard-coded list, including readable labels - simple to change or parameterize
-- `pandas` makes storage easy - but didn't bother with an index
+- `pandas` makes storage easy - but didn't bother with an index at this stage
 - Did very little transformation other than typing - e.g. later users will have to translate the county, state codes if they want string descriptors or geo data - the goal is to create a "usable format for downstream applications," which to me means generalizability and adaptability
 - Used `sqlalchemy` and `pandas` for data loading
+- Used composite primary key (`county`, `tract`, `block_group`) which I'm 90% sure is always unique
 - Security: all DB info (including password) and API key are stored as environmental variables and loaded programmatically
 - Dependencies: all pip-based, listed in `requirements.txt`; I used `conda`, but any virtual env will work
 
@@ -45,4 +46,4 @@ Limitations:
 - Expects an `acs` schema - if it doesn't exist already, fails
 - I only picked integer variables (population counts)
 - `pd.to_sql` is great, but it's quick and dirty with the schema - e.g there are no primary keys or indices - but could be easily created with a little extra raw SQL
-- No bells and whistles in SQL (e.g. indices, keys) - because downstream use unknown
+- No bells and whistles in SQL - because downstream use unknown
