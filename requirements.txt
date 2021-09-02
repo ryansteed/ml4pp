@@ -1,0 +1,6 @@
+jupyterlab
+census
+us
+pandas
+sqlalchemy
+psycopg2
